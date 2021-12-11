@@ -1,0 +1,47 @@
+Sub blankfill()
+Dim str As String
+
+ rowMax = Cells(Rows.Count, 5).End(xlUp).Row
+ 
+ rowMin = Selection.Row
+ 
+ changeClumn = Selection.Column - 1
+ 
+ For i = rowMin To rowMax - 1
+ j = i + 1
+str = Cells(i, changeClumn)
+If Cells(j, changeClumn).Value = "" Then
+
+Cells(j, changeClumn) = str
+End If
+
+ Next i
+ 
+
+Debug.Print changeClumn
+End Sub
+
+Sub sortfill()
+
+Dim rowMax, rowMin, i, j, changeClumn, seClumn, startValue, stepValue As Integer
+Dim str As String
+
+ rowMax = Cells(Rows.Count, 5).End(xlUp).Row
+ 
+ rowMin = Selection.Row
+ 
+ changeClumn = Selection.Column - 1
+seClumn = Selection.Column
+
+ startValue = 10
+ stepValue = 10
+ Selection = startValue
+ For i = rowMin To rowMax - 1
+ j = i + 1
+ 
+If Cells(i, changeClumn) = Cells(j, changeClumn) Then
+Cells(j, seClumn) = startValue
+Else
+    startValue = startValue + stepValue
+Cells(j, seClumn) = startValue
+End If
